@@ -9,8 +9,9 @@ The module challenge is the afternoon project or assignment that students work t
 ## Objectives
 
 - Explain function scope
-- Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript  
+- Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript 
 
+   
 ## Introduction
 
 This challenge focuses on both scope and closures.
@@ -42,6 +43,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+ Closure gives us the ability to put functions together, gives us the ability to access function from a parent level scope in child level scope even after the parent function has been termintated; and code that has been identified else where we can use later; Closures are impotant to understand because it allows JavaScript to emulate private methods that are useful for retricting access to code as well as managing the global namespace.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  closure is used in personalDice function, because it returns a new function inside of it.
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+the name will be Dan the sam both times, but the the randomly picked number that's assgined tp variable "newRoll" will be different.
 c. What is the lexical scope of `newRoll`? 
+personalDiced();
 
 ### Task 2c - Exit Ticket
 
@@ -97,6 +103,26 @@ addSix(21); // returns 27
 ```
 
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+
+Functional programming doesn’t  modify the state of the program by return new state eery time in immutable fashion while Object-Oriented programing is stageful, its method changes the state of its properties; Functional is about having pure function that has no side effects while Object-Oriented programming has side effect as it modify its state; Functional is declarative it focus on what need to be done while Object-Oriented programming is imperative it focuses on how the things should be done.
+
+Functional programming: 
+Cons:	Not suitable for algorithms in graphs;
+		  Purely functional vocabularies work slower than the hash tables, and for some applications, this can be critical;
+
+Pros:	Provides accurate and fast code writing;
+		  There is a smaller number of language primitives;
+		  Bring the language closer to the problem, due to the language and structures flexibility.
+
+Object-oriented programming:
+Cons:	It allows for parallel development;
+		  The modular classes are often reusable;
+		  The coding is easier to maintain;	
+
+Pros: 	It can be inefficient;
+		    It can be too scalable;
+		    It can cause duplication.
+	
 
 ## Resources
 

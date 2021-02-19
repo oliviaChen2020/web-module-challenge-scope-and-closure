@@ -28,10 +28,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *  The returned value of the countermaker function is assigned to counter1.
+ *  The counter 2 code is just an function that creates increment to function counter2
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ *    counter 1 uses a closure as it's inner scope references variable (count = 0) in outer scope.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ *  We prefer the counter1 code in scenarios that we want the inner function to have full access to all variables and functions in the outer function but the outer function does not have access to the variables and functions defined inside the inner function. we would prefer counter2 code when function is not dependent on changes that occur outside of the function.
 */
 
 // counter1 code
@@ -56,11 +62,12 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(){
+  return (Math.floor(Math.random()*3));
 
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,12 +83,21 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function getInningScore(num, cb){
+  let home  = 0;
+  let away = 0;
+  for( let i=0; i<num; i++){
+    home = cb()+ home;
+    away = cb()+away;
+  }
+ return {
+   home: home,
+   away: away,
 
-  /*Code Here*/
-
+ }
+ 
 }
-
+console.log(getInningScore(9, inning));
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -103,8 +119,24 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cb,cb2,numInning) {
+  let homeTotal = 0;
+  let awayTotal = 0;
+  for (let i = 1; i <= numInning; i ++) {
+    const scores = cb(numInning, cb2); 
+    let suffix = 'th';
+    if (i === 1) suffix = 'st';
+    if (i === 2) suffix = 'nd';
+    if (i === 3) suffix = 'rd';
+    console.log(`${i}${suffix} inning: ${scores.away} - ${scores.home}`);
+    homeTotal += scores.home;
+    awayTotal += scores.away;
+  }
+
+  console.log(`Final Score: ${homeTotal} - ${awayTotal}`);
+
 }
+
+scoreboard(getInningScore ,inning, 8);
 
 
